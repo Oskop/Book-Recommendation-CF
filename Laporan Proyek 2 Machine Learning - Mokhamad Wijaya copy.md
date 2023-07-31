@@ -17,14 +17,14 @@ Ketika jumlah buku yang disediakan perpustakaan relatif banyak, pengguna akan ke
 Berdasarkan kondisi yang telah diuraikan sebelumnya, penulis akan mengembangkan sebuah sistem rekomendasi _e-book_ untuk menjawab permasalahan berikut.
 
 - Bagaimana cara membuat model sistem rekomendasi _e-book_ dengan neural network dari metode Collaborative Filtering?
-- Bagiamana tingkat akurasi model yang akan dilatih? 
+- Bagiamana tingkat nilai error model yang akan dilatih? 
 
 ### Goals
 
 Untuk  menjawab pertanyaan tersebut, penulis membuat sistem rekomendasi dengan tujuan atau goals sebagai berikut:
 
 - Membuat model _machine learning_ dengan metode _neural network_ yang dapat memberikan daftar rekomendasi buku dengan seakurat mungkin.
-- Mengetahui tingkat akurasi dari model yang akan dilatih.
+- Mengetahui tingkat nilai error dari model yang akan dilatih.
 
 ## Data Understanding
 
