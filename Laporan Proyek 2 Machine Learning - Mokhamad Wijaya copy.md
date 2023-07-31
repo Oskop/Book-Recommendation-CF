@@ -1,4 +1,4 @@
-# Laporan Proyek 1 Machine Learning - Mokhamad Wijaya
+# Laporan Proyek 2 Machine Learning - Mokhamad Wijaya
 
 ## Domain Proyek
 
@@ -235,7 +235,7 @@ Kemudian dilakukan penjumlahan _dot product_ antara user dan isbn dengan bias us
 
 Secara matematis, fungsi sigmoid (σ) didefinisikan sebagai berikut:
 
-![Alt text](sigmoid.png)
+![sigmoid](https://github.com/Oskop/Book-Recommendation-CF/assets/40781072/22a18c44-5f3c-4126-9175-44bad6a67cd3)
 
 di mana:
 
@@ -319,7 +319,7 @@ Hasil dari evaluasi model menggunakan metrik error sebagai berikut:
 
 Gambar 4. Garfik nilai error data latih dan data uji
 
-Berdasarkan gambar di atas, dapat diambil kesimpulan bahwa model _neural network_ dengan arsitektur RecommenderNet mampu memberikan hasil yang terbilang cukup akurat dan cukup mengalami overfitting. Untuk mendapatkan nilai error yang lebih sedikit dan 
+Berdasarkan gambar di atas, dapat diambil kesimpulan bahwa model _neural network_ dengan arsitektur RecommenderNet mampu memberikan hasil yang terbilang cukup akurat dan cukup mengalami overfitting. Untuk mendapatkan nilai error yang lebih sedikit dan mengurangi terjadinya overfitting, maka dapat dilakukan dengan menambah jumlah data pada dataset, melakukan hyperparameter tunning, dan mencoba menggunakan fungsi aktivasi lain selain sigmoid seperti softmax.
 
 
 ## Kesimpulan
