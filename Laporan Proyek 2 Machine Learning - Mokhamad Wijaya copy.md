@@ -8,6 +8,18 @@ Terdapat ribuan atau bahkan jutaan judul buku yang tersedia di pasar baik pasar 
 
 Dilihat dari sudut pandang penjual buku, khususnya _e-book_, sistem rekomendasi berpengaruh pada tingkat penjualan buku yang ditawarkan. Dengan meningkatnya penjualan _e-book_ dikarenakan kepuasan konsumen akibat sistem rekomendasi yang merekomendasikan buku yang sesuai dengan preferensi dan minat, maka penjual buku dapat memperoleh profit lebih banyak dan mengembangkan bisnisnya.
 
+Berikut beberapa manfaat dari sistem rekomendasi buku.
+
+1. Meningkatkan kepuasan pelanggan: Ketika konsumen menemukan buku yang mereka nikmati atau bermanfaat, mereka lebih puas dengan pembelian mereka. Hal ini dapat meningkatkan kepercayaan pelanggan dan menghasilkan lebih banyak peluang untuk mendapatkan ulasan positif atau referensi, yang berkontribusi pada pertumbuhan bisnis.
+
+2. Pengenalan produk baru: Sistem rekomendasi dapat memperkenalkan buku-buku baru atau kurang populer kepada pelanggan yang mungkin belum mengetahuinya. Ini membantu para penulis dan penerbit untuk meningkatkan visibilitas karya mereka dan mencapai audiens yang lebih luas.
+
+3. Dorongan penjualan lintas kategori: Ketika seorang pelanggan sedang mencari atau membeli buku dalam satu kategori, sistem rekomendasi dapat menyarankan buku-buku terkait atau sejenis dari kategori lain. Hal ini membuka peluang untuk meningkatkan penjualan lintas kategori dan mendorong eksplorasi lebih lanjut oleh konsumen.
+
+4. Pengoptimalan stok: Dengan memanfaatkan data penjualan dan preferensi pelanggan, toko buku dapat mengoptimalkan stok mereka untuk memastikan bahwa buku-buku yang paling diminati tersedia dalam jumlah yang memadai. Ini membantu menghindari situasi kehabisan stok atau akumulasi buku yang kurang diminati.
+
+5. Efisiensi promosi: Sistem rekomendasi juga memungkinkan toko buku atau platform e-commerce untuk mengarahkan promosi dengan lebih efisien. Daripada melakukan iklan secara acak, mereka dapat menyusun kampanye yang ditargetkan berdasarkan preferensi dan riwayat pembelian pelanggan.
+
 Ketika jumlah buku yang disediakan perpustakaan relatif banyak, pengguna akan kesulitan untuk memilih buku yang sesuai dari sekian banyak calon buku. Dalam hal ini, makalah ini merancang sistem rekomendasi yang dipersonalisasi untuk perpustakaan perguruan tinggi berdasarkan algoritma rekomendasi hybrid. Pertama-tama, makalah ini mempelajari penerapan collaborative filtering dan algoritma rekomendasi berbasis konten dalam rekomendasi buku universitas, yang melibatkan klasifikasi pembaca, pembentukan matriks penilaian pengguna-item, konstruksi model ruang vektor dan perhitungan kesamaan antara pengguna. Dan dengan mempertimbangkan karakteristik buku dan pembaca di universitas, pengguna - matriks penilaian item ditingkatkan, dan pengelompokan digunakan untuk mengatasi masalah ketersebaran data. Lakukan eksperimen komparatif menggunakan algoritme hibrid dalam kumpulan data Library of Inner Mongolia University of Technology. Hasilnya menunjukkan bahwa metode hybrid dapat memberikan rekomendasi yang lebih akurat daripada pendekatan murni. Terakhir, platform data besar Spark yang dikombinasikan dengan algoritme rekomendasi hibrid digunakan untuk mencapai desain sistem rekomendasi buku yang dipersonalisasi.[1]
 
 ## Business Understanding
@@ -58,10 +70,10 @@ Untuk memahami tipe data apa saja yang terdapat pada dataset dapat dilakukan den
 
 Tipe data pada semua kolom atau fitur adalah non numerik sehingga membutuhkan konversi ke tipe data numerik sebelum dilakukan pengembangan model.
 
-Setelah mengatahui tipe data, kemudian dilakukan pengecekan duplikasi data dengan bantuan fungsi `Dataframe.duplicates()` untuk menghindari hasil daftar rekomendasi buku menjadi buruk. Setelah dilakukan pengecekan duplikasi pada dataset Books, tidak terdapat data duplikat.
+Setelah mengetahui tipe data, kemudian dilakukan pengecekan duplikasi data dengan bantuan fungsi `Dataframe.duplicates()` untuk menghindari hasil daftar rekomendasi buku menjadi buruk. Setelah dilakukan pengecekan duplikasi pada dataset Books, tidak terdapat data duplikat.
 > jumlah baris duplikasi dataset Books:  0
 
-Setelah melakukan pengecekan duplikasi data pada dataset Books, dilakukan pengecekan _missing value_ pada fitur-fitur dataset Books. Seletah dilakukan pengecekan _missing value_ dengan menggunakan fungsi `Dataframe.isnull().sum()`
+Setelah melakukan pengecekan duplikasi data pada dataset Books, dilakukan pengecekan _missing value_ pada fitur-fitur dataset Books. Setelah dilakukan pengecekan _missing value_ dengan menggunakan fungsi `Dataframe.isnull().sum()`
 
 | Fitur/Kolom         | jumlah |
 | ------------------- | ------ |
@@ -94,10 +106,10 @@ Untuk memahami tipe data apa saja yang terdapat pada dataset dapat dilakukan den
 
 Tipe data pada kolom User-ID dan Book-Rating adalah numerik. Tipe data pada ISBN adalah non numerik.
 
-Setelah mengatahui tipe data, kemudian dilakukan pengecekan duplikasi data dengan bantuan fungsi `Dataframe.duplicates()` untuk menghindari hasil daftar rekomendasi buku menjadi buruk. Setelah dilakukan pengecekan duplikasi pada dataset Ratings, tidak terdapat data duplikat.
+Setelah mengetahui tipe data, kemudian dilakukan pengecekan duplikasi data dengan bantuan fungsi `Dataframe.duplicates()` untuk menghindari hasil daftar rekomendasi buku menjadi buruk. Setelah dilakukan pengecekan duplikasi pada dataset Ratings, tidak terdapat data duplikat.
 > jumlah baris duplikasi dataset Ratings:  0
 
-Setelah melakukan pengecekan duplikasi data pada dataset Ratings, dilakukan pengecekan _missing value_ pada fitur-fitur dataset Ratings. Seletah dilakukan pengecekan _missing value_ dengan menggunakan fungsi `Dataframe.isnull().sum()`
+Setelah melakukan pengecekan duplikasi data pada dataset Ratings, dilakukan pengecekan _missing value_ pada fitur-fitur dataset Ratings. Setelah dilakukan pengecekan _missing value_ dengan menggunakan fungsi `Dataframe.isnull().sum()`
 
 | Fitur/Kolom         | jumlah |
 | ------------------- | ------ |
@@ -125,10 +137,10 @@ Untuk memahami tipe data apa saja yang terdapat pada dataset dapat dilakukan den
 
 Tipe data pada kolom User-ID dan Age adalah numerik. Tipe data pada Location adalah non numerik.
 
-Setelah mengatahui tipe data, kemudian dilakukan pengecekan duplikasi data dengan bantuan fungsi `Dataframe.duplicates()` untuk menghindari hasil daftar rekomendasi buku menjadi buruk. Setelah dilakukan pengecekan duplikasi pada dataset Users, tidak terdapat data duplikat.
+Setelah mengetahui tipe data, kemudian dilakukan pengecekan duplikasi data dengan bantuan fungsi `Dataframe.duplicates()` untuk menghindari hasil daftar rekomendasi buku menjadi buruk. Setelah dilakukan pengecekan duplikasi pada dataset Users, tidak terdapat data duplikat.
 > jumlah baris duplikasi dataset Users:  0
 
-Setelah melakukan pengecekan duplikasi data pada dataset Users, dilakukan pengecekan _missing value_ pada fitur-fitur dataset Users. Seletah dilakukan pengecekan _missing value_ dengan menggunakan fungsi `Dataframe.isnull().sum()`
+Setelah melakukan pengecekan duplikasi data pada dataset Users, dilakukan pengecekan _missing value_ pada fitur-fitur dataset Users. Setelah dilakukan pengecekan _missing value_ dengan menggunakan fungsi `Dataframe.isnull().sum()`
 
 | Fitur/Kolom         | jumlah |
 | ------------------- | ------ |
@@ -166,7 +178,10 @@ Berikut persiapan data yang dilakukan yaitu:
 
 3. Standarization
 
-    Untuk menyesuaikan output model yang akan berskala 0 - 1, maka nilai fitur rating diubah dengan cara nilai fitur dibagi nilai terendah kemudian dibagi dari hasil pengurangan antara nilai fitur maksimal terhadap nilai fitur minimal.
+    Untuk menyesuaikan output model yang akan berskala 0 - 1, maka nilai fitur rating diubah dengan cara nilai fitur dibagi nilai terendah kemudian dibagi dari hasil pengurangan antara nilai fitur maksimal terhadap nilai fitur minimal. Pada proyek ini, nilai minimal fitur rating adalah 0 dan nilai maksimal rating adalah 10. Perhitungannya adalah sebagai berikut.
+
+    misal nilai fitur rating _x_ = 2
+    kemudian 
 
 4. Train-Test-Split
 
@@ -178,9 +193,83 @@ Berikut persiapan data yang dilakukan yaitu:
 
 ## Modeling
 
-Model yang akan dibuat untuk sistem rekomendasi adalah model dengan _neural network_ dari metode Collaborative Filtering. Model tersebut terinspirasi dari [**RecommenderNet**](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset). Berikut adalah arsitektur dari model tersebut.
+Model yang akan dibuat untuk sistem rekomendasi adalah model dengan _neural network_ dari metode Collaborative Filtering. _Neural Network_ (Jaringan Saraf Tiruan) adalah model komputasi yang terinspirasi oleh struktur dan cara kerja jaringan saraf biologis pada otak manusia. Model ini merupakan bagian dari cabang ilmu _machine learning_, khususnya dalam bidang _deep learning_.
+
+_neural network_ terdiri dari satu atau lebih lapisan (layer) dari "neuron" atau "unit" kecil, yang juga disebut "node." Setiap neuron menerima input dari neuron-neuron pada lapisan sebelumnya, mengalikannya dengan bobot tertentu, dan menjumlahkan hasilnya. Kemudian, input yang dihasilkan akan diproses melalui fungsi aktivasi sebelum diteruskan ke neuron-neuron pada lapisan selanjutnya.
+
+Beberapa konsep penting dalam Neural Network adalah:
+
+Input Layer: Lapisan pertama dari jaringan, menerima input dari data yang diberikan.
+
+Hidden Layer: Lapisan-lapisan antara input dan output layer. Mereka berisi neuron-neuron tersembunyi yang melakukan proses pemrosesan dan representasi fitur dari input.
+
+Output Layer: Lapisan terakhir dari jaringan yang menghasilkan output prediksi atau hasil dari proses komputasi.
+
+Bobot (Weights): Setiap sambungan antara neuron memiliki bobot tertentu yang menentukan seberapa kuat atau lemahnya pengaruh input terhadap neuron berikutnya.
+
+Fungsi Aktivasi: Fungsi yang diterapkan pada output dari setiap neuron untuk mengintroduksi non-linearitas dalam model dan membantu jaringan untuk mempelajari hubungan yang kompleks dalam data.
+
+Forward Propagation: Proses mengalirkan input data dari input layer hingga output layer untuk menghasilkan prediksi.
+
+Backpropagation: Algoritme untuk menghitung gradien kesalahan (loss) jaringan terhadap bobotnya, sehingga model dapat mengoreksi bobotnya selama proses pelatihan dan meningkatkan performa.
+
+Neural Network telah mengungguli banyak bidang dalam ilmu data, seperti pengenalan wajah, pemrosesan bahasa alami, pengenalan suara, permainan komputer, dan banyak lagi. Model Deep Learning yang lebih kompleks seperti Convolutional Neural Networks (CNNs) dan Recurrent Neural Networks (RNNs) telah memberikan terobosan besar dalam beberapa masalah pemrosesan data yang sulit dan kompleks.
+
+Model yang dipakai pada proyek ini terinspirasi dari [**RecommenderNet**](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset). Berikut adalah arsitektur dari model tersebut.
 
 ![RecommenderNet](https://github.com/Oskop/Book-Recommendation-CF/assets/40781072/3d5273ab-a302-4cf1-88c1-75197543f54f)
+
+Arsitektur model tersebut terdiri dari 4 layer embedding. 
+
+1. Layer pertama adalah layer user embedding menggunakan class `tensorflow.keras.layers.Embedding` dengan parameter dimensi input sebesar jumlah user yaitu 2207, dimensi output sebesar 50, `embedding_initializer` berupa 'he_normal' dan `embeddings_regularizer` menggunakan `tensorflow.keras.regularizers.l2` dengan paramternya 1e-6.
+
+2. Layer kedua adalah layer user bias menggunakan class `tensorflow.keras.layers.Embedding` dengan parameter dimensi input sebesar jumlah user yaitu 2207, dan dimensi output sebesar 50.
+
+3. Layer ketiga adalah layer book (isbn) embedding menggunakan class `tensorflow.keras.layers.Embedding` dengan parameter dimensi input sebesar jumlah user yaitu 5000, dimensi output sebesar 50, `embedding_initializer` berupa 'he_normal' dan `embeddings_regularizer` menggunakan `tensorflow.keras.regularizers.l2` dengan paramternya 1e-6.
+
+4. Layer keempat adalah layer book (isbn) bias menggunakan class `tensorflow.keras.layers.Embedding` dengan parameter dimensi input sebesar jumlah user yaitu 5000, dan dimensi output sebesar 50.
+
+Proses dari keempat layer tersebut dimulai dari menginisialisasi layer-layer tersebut sesuai dengan inputan (user dan isbn/buku), kemudian layer pertama dan ketiga dimasukkan ke dalam fungsi `tenforflow.tensordot`. Tensordot (juga dikenal sebagai kontraksi tensor) menjumlahkan produk elemen dari a (user embedding) dan b (isbn embedding) pada indeks yang ditentukan oleh _axes_ (2) yang dalam hal ini, hasil luarannya dinamakan _dot product_ antara user dan isbn.
+
+Kemudian dilakukan penjumlahan _dot product_ antara user dan isbn dengan bias user dari layer kedua dan bias isbn dari layer keempat. Hasil dari perhitungan tersebut kemudian dimasukkan ke dalam fungsi `tensorflow.nn.sigmoid`. Sigmoid adalah salah satu fungsi aktivasi yang sering digunakan dalam lapisan neuron pada _neural network_. Fungsi sigmoid memiliki bentuk S yang dapat mengambil input berupa bilangan riil dan menghasilkan output yang berada dalam rentang 0 hingga 1.
+
+Secara matematis, fungsi sigmoid (σ) didefinisikan sebagai berikut:
+
+![Alt text](sigmoid.png)
+
+di mana:
+
+x adalah input ke neuron (jumlahan dari hasil perkalian bobot dan input dari neuron-neuron di lapisan sebelumnya).
+
+e adalah bilangan Euler (2.71828...), dasar logaritma alami.
+
+Data input pada model adalah User-ID dan ISBN (untuk inferensi model berarti ISBN dari buku yang belum diberi rating oleh pengguna), kemudian diproses oleh model dari layer 1 sampai 4, sehingga menghasilkan daftar rekomendasi buku untuk User-ID tersebut.
+
+kemudian dilakukan inferensi dari model untuk pengguna dengan User-ID = 2977 dengan hasil sebagai berikut.
+
+Tabel Buku dengan rating yang tinggi dari pengguna
+
+| ISBN       | Judul Buku                    | Author              |
+| ---------- | ----------------------------- | ------------------- |
+| 0553207628 | History of Women In America   | Carol Hymowitz      |
+| 0140441077 | The Prince (Penguin Classics) | Niccolo Machiavelli |
+| 0933932669 | The Sadness of Christ         | Thomas More         |
+| 1573225681 | Living Buddha, Living Christ  | Thich Nhat Hanh     |
+
+Tabel Top 10 Rekomendasi Buku untuk pengguna
+
+| ISBN       | Judul Buku                    | Author              |
+| ---------- | ----------------------------- | ------------------- |
+3404128753   | Der Schatten des Herrn.       | John F. Case |
+031298670X   | Elliott Roosevelt's Murder at the President's Door : An Eleanor Roosevelt Mystery (An Eleanor Roosevelt Mystery) | Elliott Roosevelt |
+0425174336   | Crimson Stain | Jim Fisher |
+0736905588   | The Proposal: Book 1 (The English Garden Series) | Lori Wick |
+0201518015   | Husband Is the Past Tense of Daddy: And Other Dispatches from the Front Lines of Motherhood | Teryl Zarnow |
+0310904102   | Comparative Study Bible | Not Applicable (Na ) |
+1854060627   | Baby Apatosaurus | Dick Dudley |
+0679808477   | The Berenstain Bears and the Prize Pumpkin (First Time Books) | STAN BERENSTAIN |
+0140439161   | The Bounty Mutiny (Penguin Classics) | William Bligh |
+0553379925   | Caring for Your School Age Child : Ages 5-12 | EDWARD L. SCHOR |
 
 ## Evaluation
 
@@ -190,15 +279,29 @@ Untuk mengevaluasi model yang telah dilatih, proyek ini menggunakan metrik `erro
 
 Metrik eror adalah salah satu metrik evaluasi yang digunakan dalam model machine learning untuk mengukur seberapa besar nilai error model dalam melakukan prediksi. Nilai eror yang dimaksud adalah selisih antara nilai sebenarnya dan nilai prediksi.
 
-Evaluasi model pada proyek ini menggunakan metrik error dengan fungsi `RootMeanSquaredError` atau disingkat RMSE dari package Tensorflow Keras.
+Root Mean Squared Error (RMSE) adalah salah satu metrik evaluasi yang umum digunakan untuk mengukur kualitas atau akurasi prediksi model, termasuk pada Neural Network. RMSE mengukur seberapa besar selisih antara nilai prediksi yang dihasilkan oleh model dengan nilai sebenarnya dalam dataset.
+
+Secara matematis, RMSE dihitung dengan langkah-langkah berikut:
+
+1. Terlebih dahulu, lakukan prediksi menggunakan model Neural Network terhadap data uji atau data validasi. Setiap data uji menghasilkan nilai prediksi y_pred.
+
+2. Bandingkan nilai prediksi (y_pred) dengan nilai sebenarnya (y_true) dari data uji dan hitung selisih antara keduanya.
+
+3. Kuadratkan setiap selisih.
+
+4. Hitung rata-rata dari semua kuadrat selisih.
+
+5. Ambil akar kuadrat dari rata-rata tersebut untuk mendapatkan RMSE.
+
+Secara matematis, rumus RMSE adalah sebagai berikut:
 
 Berikut rumus matematika untuk menghitung nilai error RMSE:
 
 ![RMSE1](https://github.com/Oskop/Book-Recommendation-CF/assets/40781072/cb8396af-c348-4b34-8e61-6ea8f53c8aae)
-    
+
 Gambar 3. Rumus Root Mean Squared Error
 
-Keterangan:
+di mana:
 
 N = jumlah dataset
 
@@ -206,7 +309,9 @@ Actual_i = nilai sebenarnya
 
 Predicted_i = nilai prediksi
 
-Rentang pada nilai eror yaitu dari 0 sampai n. Nilai error model yang paling mendekati 0 akan menjadi model yang terbaik.
+RMSE mengukur akar rata-rata dari selisih antara prediksi dan nilai sebenarnya. Semakin kecil nilai RMSE, semakin baik performa model, karena artinya prediksi model lebih mendekati nilai sebenarnya. Sebaliknya, semakin besar nilai RMSE, semakin besar kesalahan prediksi model.
+
+Dalam proses pelatihan Neural Network, tujuan utama adalah untuk meminimalkan nilai RMSE dengan mengoptimasi bobot dan bias pada jaringan agar prediksi model semakin mendekati nilai sebenarnya pada dataset pelatihan dan validasi.
 
 Hasil dari evaluasi model menggunakan metrik error sebagai berikut:
 
@@ -214,7 +319,7 @@ Hasil dari evaluasi model menggunakan metrik error sebagai berikut:
 
 Gambar 4. Garfik nilai error data latih dan data uji
 
-Berdasarkan gambar di atas, dapat diambil kesimpulan bahwa model _neural network_ dengan arsitektur RecommenderNet mampu memberikan hasil yang terbilang cukup akurat dan cukup mengalami overfitting.
+Berdasarkan gambar di atas, dapat diambil kesimpulan bahwa model _neural network_ dengan arsitektur RecommenderNet mampu memberikan hasil yang terbilang cukup akurat dan cukup mengalami overfitting. Untuk mendapatkan nilai error yang lebih sedikit dan 
 
 
 ## Kesimpulan
