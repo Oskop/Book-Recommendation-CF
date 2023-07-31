@@ -180,7 +180,7 @@ Berikut persiapan data yang dilakukan yaitu:
 
 Model yang akan dibuat untuk sistem rekomendasi adalah model dengan _neural network_ dari metode Collaborative Filtering. Model tersebut terinspirasi dari [**RecommenderNet**](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset). Berikut adalah arsitektur dari model tersebut.
 
-![Alt text](RecommenderNet.png)
+![RecommenderNet](https://github.com/Oskop/Book-Recommendation-CF/assets/40781072/3d5273ab-a302-4cf1-88c1-75197543f54f)
 
 ## Evaluation
 
@@ -194,9 +194,9 @@ Evaluasi model pada proyek ini menggunakan metrik error dengan fungsi `RootMeanS
 
 Berikut rumus matematika untuk menghitung nilai error RMSE:
 
-![Alt text](RMSE1.jpg)
+![RMSE1](https://github.com/Oskop/Book-Recommendation-CF/assets/40781072/cb8396af-c348-4b34-8e61-6ea8f53c8aae)
     
-Gambar 3. Rumus Mean Squared Error
+Gambar 3. Rumus Root Mean Squared Error
 
 Keterangan:
 
@@ -210,7 +210,7 @@ Rentang pada nilai eror yaitu dari 0 sampai n. Nilai error model yang paling men
 
 Hasil dari evaluasi model menggunakan metrik error sebagai berikut:
 
-!![Alt text](grafik_error.png)
+![grafik_error](https://github.com/Oskop/Book-Recommendation-CF/assets/40781072/684ee67a-9c67-4ba3-9cfc-cb0f85c24a4f)
 
 Gambar 4. Garfik nilai error data latih dan data uji
 
