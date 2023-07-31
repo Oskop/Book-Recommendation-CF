@@ -20,6 +20,8 @@ Berikut beberapa manfaat dari sistem rekomendasi buku.
 
 5. Efisiensi promosi: Sistem rekomendasi juga memungkinkan toko buku atau platform e-commerce untuk mengarahkan promosi dengan lebih efisien. Daripada melakukan iklan secara acak, mereka dapat menyusun kampanye yang ditargetkan berdasarkan preferensi dan riwayat pembelian pelanggan.
 
+Dalam proyek ini, penulis fokus pada membuat model sistem rekomendasi buku yang dapat menghasilkan daftar rekomendasi buku yang belum diberikan rating oleh pengguna dalam sebuah platform _e-commerce_.
+
 Ketika jumlah buku yang disediakan perpustakaan relatif banyak, pengguna akan kesulitan untuk memilih buku yang sesuai dari sekian banyak calon buku. Dalam hal ini, makalah ini merancang sistem rekomendasi yang dipersonalisasi untuk perpustakaan perguruan tinggi berdasarkan algoritma rekomendasi hybrid. Pertama-tama, makalah ini mempelajari penerapan collaborative filtering dan algoritma rekomendasi berbasis konten dalam rekomendasi buku universitas, yang melibatkan klasifikasi pembaca, pembentukan matriks penilaian pengguna-item, konstruksi model ruang vektor dan perhitungan kesamaan antara pengguna. Dan dengan mempertimbangkan karakteristik buku dan pembaca di universitas, pengguna - matriks penilaian item ditingkatkan, dan pengelompokan digunakan untuk mengatasi masalah ketersebaran data. Lakukan eksperimen komparatif menggunakan algoritma hibrid dalam kumpulan data Library of Inner Mongolia University of Technology. Hasilnya menunjukkan bahwa metode hybrid dapat memberikan rekomendasi yang lebih akurat daripada pendekatan murni. Terakhir, platform data besar Spark yang dikombinasikan dengan algoritma rekomendasi hibrid digunakan untuk mencapai desain sistem rekomendasi buku yang dipersonalisasi.[1]
 
 ## Business Understanding
@@ -28,14 +30,14 @@ Ketika jumlah buku yang disediakan perpustakaan relatif banyak, pengguna akan ke
 
 Berdasarkan kondisi yang telah diuraikan sebelumnya, penulis akan mengembangkan sebuah sistem rekomendasi _e-book_ untuk menjawab permasalahan berikut.
 
-- Bagaimana cara membuat model sistem rekomendasi _e-book_ dengan neural network dari metode Collaborative Filtering?
+- Bagaimana cara membuat model sistem rekomendasi _e-book_ dengan neural network dari metode Collaborative Filtering yang menghasilkan daftar rekomendasi buku yang belum pernah diberi rating oleh pengguna?
 - Bagiamana tingkat nilai error model yang akan dilatih? 
 
 ### Goals
 
 Untuk  menjawab pertanyaan tersebut, penulis membuat sistem rekomendasi dengan tujuan atau goals sebagai berikut:
 
-- Membuat model _machine learning_ dengan metode _neural network_ yang dapat memberikan daftar rekomendasi buku dengan seakurat mungkin.
+- Membuat model _machine learning_ dengan metode _neural network_ yang dapat memberikan daftar rekomendasi buku yang belum pernah diberi rating oleh pengguna seakurat mungkin.
 - Mengetahui tingkat nilai error dari model yang akan dilatih.
 
 ## Data Understanding
@@ -193,7 +195,9 @@ Berikut persiapan data yang dilakukan yaitu:
 
 ## Modeling
 
-Model yang akan dibuat untuk sistem rekomendasi adalah model dengan _neural network_ dari metode Collaborative Filtering. _Neural Network_ (Jaringan Saraf Tiruan) adalah model komputasi yang terinspirasi oleh struktur dan cara kerja jaringan saraf biologis pada otak manusia. Model ini merupakan bagian dari cabang ilmu _machine learning_, khususnya dalam bidang _deep learning_.
+Model yang akan dibuat untuk sistem rekomendasi adalah model dengan _neural network_ dari metode Collaborative Filtering pada cabang model based bagian _deep learning_. Model ini dibuat untuk memberikan daftar rekomendasi buku yang belum pernah diberi rating oleh pengguna. Dengan memberikan daftar rekomendasi buku berdasarkan skor dengan skala 0-1 (rating) yang keluar dari model diharapkan dapat membuat pengguna tertarik dan membeli salah satu atau sebagian buku yang direkomendasikan.
+
+ _Neural Network_ (Jaringan Saraf Tiruan) adalah model komputasi yang terinspirasi oleh struktur dan cara kerja jaringan saraf biologis pada otak manusia. Model ini merupakan bagian dari cabang ilmu _machine learning_, khususnya dalam bidang _deep learning_.
 
 _neural network_ terdiri dari satu atau lebih lapisan (layer) dari "neuron" atau "unit" kecil, yang juga disebut "node." Setiap neuron menerima input dari neuron-neuron pada lapisan sebelumnya, mengalikannya dengan bobot tertentu, dan menjumlahkan hasilnya. Kemudian, input yang dihasilkan akan diproses melalui fungsi aktivasi sebelum diteruskan ke neuron-neuron pada lapisan selanjutnya.
 
@@ -216,8 +220,6 @@ Backpropagation: algoritma untuk menghitung gradien kesalahan (loss) jaringan te
 Neural Network telah mengungguli banyak bidang dalam ilmu data, seperti pengenalan wajah, pemrosesan bahasa alami, pengenalan suara, permainan komputer, dan banyak lagi. Model Deep Learning yang lebih kompleks seperti Convolutional Neural Networks (CNNs) dan Recurrent Neural Networks (RNNs) telah memberikan terobosan besar dalam beberapa masalah pemrosesan data yang sulit dan kompleks.
 
 Model yang dipakai pada proyek ini terinspirasi dari [**RecommenderNet**](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset). Berikut adalah arsitektur dari model tersebut.
-
-![RecommenderNet](https://github.com/Oskop/Book-Recommendation-CF/assets/40781072/3d5273ab-a302-4cf1-88c1-75197543f54f)
 
 Arsitektur model tersebut terdiri dari 4 layer embedding. 
 
